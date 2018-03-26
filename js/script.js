@@ -1,16 +1,16 @@
-function Phone (brand, price, color,) {
-  this.brand = brand
-  this.price = price
-  this.color = color
+function Button (text) {
+  this.text = text || 'Hello!'
 }
-
-Phone.prototype.printInfo = function () {
-  console.log('The phone brand is ' + this.brand + ', color is ' + this.color + ' and the price is ' + this.price + '.')
+Button.prototype = {
+  create: function () {
+    var self = this
+    this.$element = $('<button>')
+    this.$element.text(this.text)
+    this.$element.click(function() {
+      alert(self.text)
+    })
+    this.$element.appendTo($('body'))
+  }
 }
-
-var iPhoneX = new Phone('Apple', 5729, 'space grey', 'cool')
-iPhoneX.printInfo()
-var samsungGalaxyS9 = new Phone('Samsung', 3599, 'midnight black', 'cool enough')
-samsungGalaxyS9.printInfo()
-var onePlusOne5T = new Phone('OnePlus5T', 2799, 'lava red', "well... it's ok" + '.')
-onePlusOne5T.printInfo()
+var btn1 = new Button('Hello!')
+btn1.create();
